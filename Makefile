@@ -1,7 +1,7 @@
 TARGET = main
 CC = gcc
 # CC = clang
-CFLAGS=`pkg-config --cflags glib-2.0` -Wall -Wextra -pedantic -std=c99 -O2
+CFLAGS=`pkg-config --cflags glib-2.0` -Wall -Wextra -pedantic -std=c99 -g
 LIBS=`pkg-config --libs glib-2.0`
 
 .PHONY: default all clean
