@@ -6,14 +6,14 @@
 
 typedef int (main_t)(void);
 
-int usage(void)
+void usage(void)
 {
 	fprintf(stderr, "Usage:\n\t./main [what]\n");
-	return EXIT_FAILURE;
 }
 
 int main(int argn, char *argv[])
 {
+	int retval;
 	GHashTable *main_map = g_hash_table_new(g_str_hash, g_str_equal);
 	g_hash_table_insert(main_map, "slist", (gpointer)main_slist);
 	g_hash_table_insert(main_map, "list", (gpointer)main_list);
@@ -21,15 +21,23 @@ int main(int argn, char *argv[])
 
 	if (argn < 2) {
 		g_warning("No main given");
-		return usage();
+		usage();
+		retval = EXIT_FAILURE;
+		goto cleanup;
 	}
 
 	const char *what = g_strstrip(argv[1]);
 	main_t *main_p = g_hash_table_lookup(main_map, what);
 	if (main_p == NULL) {
 		g_warning("No main found for \"%s\".", what);
-		return usage();
+		usage();
+		retval = EXIT_FAILURE;
+		goto cleanup;
 	}
 
-	return (*main_p)();
+	retval = (*main_p)();
+
+cleanup:
+	g_hash_table_unref(main_map);
+	return retval;
 }

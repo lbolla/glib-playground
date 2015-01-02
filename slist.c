@@ -10,8 +10,8 @@ int main_slist(void)
 	const int N = 10;
 	GSList *list = NULL;
 
-	for (int i = 0; i < N; i++) {
-		list = g_slist_append(list, (void *)(long)i);
+	for (long i = 0; i < N; i++) {
+		list = g_slist_append(list, (gpointer)i);
 	}
 	g_slist_foreach(list, (GFunc)print_elem, "-->");
 	g_slist_free(list);
