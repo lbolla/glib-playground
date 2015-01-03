@@ -21,7 +21,7 @@ $(TARGET): $(OBJECTS)
 	$(CC) $(OBJECTS) -Wall $(LIBS) -o $@
 
 valgrind: $(TARGET)
-	G_DEBUG=gc-friendly G_SLICE=always-malloc valgrind --leak-check=full ./$(TARGET) loop
+	G_DEBUG=gc-friendly G_SLICE=always-malloc valgrind --leak-check=full ./$(TARGET) testing
 
 clean:
 	-rm -f *.o

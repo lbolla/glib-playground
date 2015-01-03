@@ -5,7 +5,7 @@ void print_elem(gpointer item, gpointer prefix)
 	g_message("%s %ld", (char *)prefix, (long)item);
 }
 
-int main_slist(void)
+int main_slist(int argn, char *argv[])
 {
 	const int N = 10;
 	GSList *list = NULL;

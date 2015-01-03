@@ -12,7 +12,7 @@ gboolean f(GMainLoop *main_loop)
 	return TRUE;
 }
 
-int main_main_loop(void)
+int main_main_loop(int argn, char *argv[])
 {
 	g_message("Create loop");
 	GMainLoop *main_loop = g_main_loop_new(NULL, FALSE);

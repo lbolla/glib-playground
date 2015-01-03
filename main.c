@@ -4,7 +4,7 @@
 #include <glib.h>
 #include "main.h"
 
-typedef int (main_t)(void);
+typedef int (main_t)(int, char**);
 
 void usage(void)
 {
@@ -18,6 +18,7 @@ int main(int argn, char *argv[])
 	g_hash_table_insert(main_map, "slist", (gpointer)main_slist);
 	g_hash_table_insert(main_map, "list", (gpointer)main_list);
 	g_hash_table_insert(main_map, "loop", (gpointer)main_main_loop);
+	g_hash_table_insert(main_map, "testing", (gpointer)main_testing);
 
 	if (argn < 2) {
 		g_warning("No main given");
@@ -35,7 +36,7 @@ int main(int argn, char *argv[])
 		goto cleanup;
 	}
 
-	retval = (*main_p)();
+	retval = (*main_p)(argn, argv);
 
 cleanup:
 	g_hash_table_unref(main_map);

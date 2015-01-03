@@ -16,7 +16,7 @@ void person_free(Person *p) {
 	g_free(p);
 }
 
-int main_list(void)
+int main_list(int argn, char *argv[])
 {
 	const int N = 1;
 	GList *list = NULL;
