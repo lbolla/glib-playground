@@ -1,4 +1,5 @@
 #include <glib.h>
+#include "main.h"
 
 typedef struct {
 	char *name;
@@ -16,7 +17,7 @@ void person_free(Person *p) {
 	g_free(p);
 }
 
-int main_list(int argn, char *argv[])
+int main_list(void)
 {
 	const int N = 1;
 	GList *list = NULL;

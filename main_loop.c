@@ -1,4 +1,5 @@
 #include <glib.h>
+#include "main.h"
 
 gboolean f(GMainLoop *main_loop)
 {
@@ -12,7 +13,7 @@ gboolean f(GMainLoop *main_loop)
 	return TRUE;
 }
 
-int main_main_loop(int argn, char *argv[])
+int main_main_loop(void)
 {
 	g_message("Create loop");
 	GMainLoop *main_loop = g_main_loop_new(NULL, FALSE);

@@ -4,8 +4,6 @@
 #include <glib.h>
 #include "main.h"
 
-typedef int (main_t)(int, char**);
-
 void usage(void)
 {
 	fprintf(stderr, "Usage:\n\t./main [what]\n");
@@ -13,6 +11,7 @@ void usage(void)
 
 int main(int argn, char *argv[])
 {
+	typedef int (main_t)();
 	int retval;
 	GHashTable *main_map = g_hash_table_new(g_str_hash, g_str_equal);
 	g_hash_table_insert(main_map, "slist", (gpointer)main_slist);
